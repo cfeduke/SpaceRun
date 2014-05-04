@@ -94,6 +94,28 @@
     [asteroid runAction:all];
 }
 
+- (void)checkCollisions
+{
+    SKNode *ship = [self childNodeWithName:@"ship"];
+    
+    [self enumerateChildNodesWithName:@"obstacle" usingBlock:^(SKNode *obstacle, BOOL *stop) {
+        if ([ship intersectsNode:obstacle]) {
+            self.shipTouch = nil;
+            [ship removeFromParent];
+            [obstacle removeFromParent];
+        }
+        [self enumerateChildNodesWithName:@"photon" usingBlock:^(SKNode *photon, BOOL *stop) {
+            if ([photon intersectsNode:obstacle]) {
+                [photon removeFromParent];
+                [obstacle removeFromParent];
+                *stop = YES;
+            }
+        }];
+    }];
+    
+    
+}
+
 - (void)update:(NSTimeInterval)currentTime
 {
     if (self.lastUpdateTime == 0) {
@@ -115,7 +137,7 @@
         [self dropAsteroid];
     }
     
-
+    [self checkCollisions];
     
     self.lastUpdateTime = currentTime;
 }
