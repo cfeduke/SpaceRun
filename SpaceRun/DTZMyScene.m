@@ -3,6 +3,7 @@
 @interface DTZMyScene ()
 @property (nonatomic, weak) UITouch *shipTouch;
 @property (nonatomic) NSTimeInterval lastUpdateTime;
+@property (nonatomic) NSTimeInterval lastShotFireTime;
 @end
 
 @implementation DTZMyScene
@@ -48,6 +49,23 @@
         
 }
 
+- (void)shoot
+{
+    SKNode *ship = [self childNodeWithName:@"ship"];
+    
+    SKSpriteNode *photon = [SKSpriteNode spriteNodeWithImageNamed:@"photon"];
+    photon.name = @"photon";
+    photon.position = ship.position;
+    [self addChild:photon];
+    
+    SKAction *fly = [SKAction moveByX:0
+                                    y:self.size.height + photon.size.height
+                             duration:0.5];
+    SKAction *remove = [SKAction removeFromParent];
+    SKAction *fireAndRemove = [SKAction sequence:@[fly, remove]];
+    [photon runAction:fireAndRemove];
+}
+
 - (void)update:(NSTimeInterval)currentTime
 {
     if (self.lastUpdateTime == 0) {
@@ -58,6 +76,11 @@
     if (self.shipTouch) {
         [self moveShipTowardPoint:[self.shipTouch locationInNode:self]
                       byTimeDelta:timeDelta];
+        
+        if (currentTime - self.lastShotFireTime > 0.5) {
+            [self shoot];
+            self.lastShotFireTime = currentTime;
+        }
     }
     self.lastUpdateTime = currentTime;
 }
