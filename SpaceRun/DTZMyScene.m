@@ -66,6 +66,34 @@
     [photon runAction:fireAndRemove];
 }
 
+- (void)dropAsteroid
+{
+    CGFloat sideSize = 15 + arc4random_uniform(30);
+    CGFloat maxX = self.size.width;
+    CGFloat quarterX = maxX / 4;
+    CGFloat startX = arc4random_uniform(maxX + (quarterX * 2)) - quarterX;
+    CGFloat startY = self.size.height + sideSize;
+    CGFloat endX = arc4random_uniform(maxX);
+    CGFloat endY = 0 - sideSize;
+    
+    SKSpriteNode *asteroid = [SKSpriteNode spriteNodeWithImageNamed:@"asteroid"];
+    asteroid.size = CGSizeMake(sideSize, sideSize);
+    asteroid.position = CGPointMake(startX, startY);
+    asteroid.name = @"obstacle";
+    [self addChild:asteroid];
+    
+    SKAction *move = [SKAction moveTo:CGPointMake(endX, endY)
+                             duration:3 + arc4random_uniform(4)];
+    SKAction *remove = [SKAction removeFromParent];
+    SKAction *travelAndRemove = [SKAction sequence:@[move, remove]];
+    
+    SKAction *spin = [SKAction rotateByAngle:3 duration:arc4random_uniform(2) + 1];
+    SKAction *spinForever = [SKAction repeatActionForever:spin];
+    
+    SKAction *all = [SKAction group:@[spinForever, travelAndRemove]];
+    [asteroid runAction:all];
+}
+
 - (void)update:(NSTimeInterval)currentTime
 {
     if (self.lastUpdateTime == 0) {
@@ -82,6 +110,13 @@
             self.lastShotFireTime = currentTime;
         }
     }
+    
+    if (arc4random_uniform(1000) <= 15) {
+        [self dropAsteroid];
+    }
+    
+
+    
     self.lastUpdateTime = currentTime;
 }
 @end
