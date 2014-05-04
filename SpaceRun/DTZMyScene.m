@@ -2,6 +2,7 @@
 
 @interface DTZMyScene ()
 @property (nonatomic, weak) UITouch *shipTouch;
+@property (nonatomic) NSTimeInterval lastUpdateTime;
 @end
 
 @implementation DTZMyScene
@@ -26,11 +27,38 @@
     self.shipTouch = [touches anyObject];
 }
 
+- (void)moveShipTowardPoint:(CGPoint)point byTimeDelta:(NSTimeInterval)timeDelta
+{
+    CGFloat shipSpeed = 130;
+    SKNode *ship = [self childNodeWithName:@"ship"];
+    CGFloat distanceLeft = sqrt(pow(ship.position.x - point.x, 2) +
+                                pow(ship.position.y - point.y, 2));
+    
+    if (distanceLeft > 4) {
+        CGFloat distanceToTravel = timeDelta * shipSpeed;
+        
+        CGFloat angle = atan2(point.y - ship.position.y,
+                              point.x - ship.position.x);
+        CGFloat yOffset = distanceToTravel * sin(angle);
+        CGFloat xOffset = distanceToTravel * cos(angle);
+        
+        ship.position = CGPointMake(ship.position.x + xOffset,
+                                    ship.position.y + yOffset);
+    }
+        
+}
+
 - (void)update:(NSTimeInterval)currentTime
 {
-    if (self.shipTouch) {
-        SKNode *ship = [self childNodeWithName:@"ship"];
-        ship.position = [self.shipTouch locationInNode:self];
+    if (self.lastUpdateTime == 0) {
+        self.lastUpdateTime = currentTime;
     }
+    NSTimeInterval timeDelta = currentTime - self.lastUpdateTime;
+    
+    if (self.shipTouch) {
+        [self moveShipTowardPoint:[self.shipTouch locationInNode:self]
+                      byTimeDelta:timeDelta];
+    }
+    self.lastUpdateTime = currentTime;
 }
 @end
