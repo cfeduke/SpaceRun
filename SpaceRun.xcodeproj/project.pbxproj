@@ -26,6 +26,7 @@
 		677A1CD91915CD260042DCDD /* SpaceRunTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 677A1CD81915CD260042DCDD /* SpaceRunTests.m */; };
 		6791C4061915EB2C00F5F15E /* asteroid.png in Resources */ = {isa = PBXBuildFile; fileRef = 6791C4041915EB2C00F5F15E /* asteroid.png */; };
 		6791C4071915EB2C00F5F15E /* photon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6791C4051915EB2C00F5F15E /* photon.png */; };
+		6791C409191750AC00F5F15E /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 6791C408191750AC00F5F15E /* enemy.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		677A1CD81915CD260042DCDD /* SpaceRunTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpaceRunTests.m; sourceTree = "<group>"; };
 		6791C4041915EB2C00F5F15E /* asteroid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asteroid.png; sourceTree = "<group>"; };
 		6791C4051915EB2C00F5F15E /* photon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photon.png; sourceTree = "<group>"; };
+		6791C408191750AC00F5F15E /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 		677A1CAE1915CD260042DCDD /* SpaceRun */ = {
 			isa = PBXGroup;
 			children = (
+				6791C408191750AC00F5F15E /* enemy.png */,
 				6791C4041915EB2C00F5F15E /* asteroid.png */,
 				6791C4051915EB2C00F5F15E /* photon.png */,
 				677A1CB71915CD260042DCDD /* DTZAppDelegate.h */,
@@ -249,6 +252,7 @@
 			files = (
 				677A1CB31915CD260042DCDD /* InfoPlist.strings in Resources */,
 				677A1CC61915CD260042DCDD /* Images.xcassets in Resources */,
+				6791C409191750AC00F5F15E /* enemy.png in Resources */,
 				677A1CC41915CD260042DCDD /* Spaceship.png in Resources */,
 				6791C4061915EB2C00F5F15E /* asteroid.png in Resources */,
 				677A1CBC1915CD260042DCDD /* Main.storyboard in Resources */,

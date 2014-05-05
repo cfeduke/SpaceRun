@@ -94,6 +94,65 @@
     [asteroid runAction:all];
 }
 
+- (void)dropEnemyShip
+{
+    CGFloat sideSize = 30;
+    CGFloat startX = arc4random_uniform(self.size.width - 40) + 20;
+    CGFloat startY = self.size.height + sideSize;
+    
+    SKSpriteNode *enemy = [SKSpriteNode spriteNodeWithImageNamed:@"enemy"];
+    enemy.size = CGSizeMake(sideSize, sideSize);
+    enemy.position = CGPointMake(startX, startY);
+    enemy.name = @"obstacle";
+    [self addChild:enemy];
+    
+    CGPathRef shipPath = [self buildEnemyShipMovementPath];
+    
+    SKAction *followPath = [SKAction followPath:shipPath
+                                       asOffset:YES
+                                   orientToPath:YES
+                                       duration:7];
+    SKAction *remove = [SKAction removeFromParent];
+    SKAction *all = [SKAction sequence:@[followPath, remove]];
+    [enemy runAction:all];
+}
+
+- (CGPathRef)buildEnemyShipMovementPath
+{
+    UIBezierPath* bezierPath = [UIBezierPath bezierPath];
+    [bezierPath moveToPoint: CGPointMake(0.5, -0.5)];
+    [bezierPath addCurveToPoint: CGPointMake(-2.5, -59.5)
+                  controlPoint1: CGPointMake(0.5, -0.5)
+                  controlPoint2: CGPointMake(4.55, -29.48)];
+    [bezierPath addCurveToPoint: CGPointMake(-27.5, -154.5)
+                  controlPoint1: CGPointMake(-9.55, -89.52)
+                  controlPoint2: CGPointMake(-43.32, -115.43)];
+    [bezierPath addCurveToPoint: CGPointMake(30.5, -243.5)
+                  controlPoint1: CGPointMake(-11.68, -193.57)
+                  controlPoint2: CGPointMake(17.28, -186.95)];
+    [bezierPath addCurveToPoint: CGPointMake(-52.5, -379.5)
+                  controlPoint1: CGPointMake(43.72, -300.05)
+                  controlPoint2: CGPointMake(-47.71, -335.76)];
+    [bezierPath addCurveToPoint: CGPointMake(54.5, -449.5)
+                  controlPoint1: CGPointMake(-57.29, -423.24)
+                  controlPoint2: CGPointMake(-8.14, -482.45)];
+    [bezierPath addCurveToPoint: CGPointMake(-5.5, -348.5)
+                  controlPoint1: CGPointMake(117.14, -416.55)
+                  controlPoint2: CGPointMake(52.25, -308.62)];
+    [bezierPath addCurveToPoint: CGPointMake(10.5, -494.5)
+                  controlPoint1: CGPointMake(-63.25, -388.38)
+                  controlPoint2: CGPointMake(-14.48, -457.43)];
+    [bezierPath addCurveToPoint: CGPointMake(0.5, -559.5)
+                  controlPoint1: CGPointMake(23.74, -514.16)
+                  controlPoint2: CGPointMake(6.93, -537.57)];
+    [bezierPath addCurveToPoint: CGPointMake(-2.5, -644.5)
+                  controlPoint1: CGPointMake(-5.2, -578.93)
+                  controlPoint2: CGPointMake(-2.5, -644.5)];
+    
+    return bezierPath.CGPath;
+}
+
+
 - (void)checkCollisions
 {
     SKNode *ship = [self childNodeWithName:@"ship"];
@@ -113,7 +172,16 @@
         }];
     }];
     
-    
+}
+
+- (void)dropThing
+{
+    u_int32_t dice = arc4random_uniform(100);
+    if (dice < 15) {
+        [self dropEnemyShip];
+    } else {
+        [self dropAsteroid];
+    }
 }
 
 - (void)update:(NSTimeInterval)currentTime
@@ -134,7 +202,7 @@
     }
     
     if (arc4random_uniform(1000) <= 15) {
-        [self dropAsteroid];
+        [self dropThing];
     }
     
     [self checkCollisions];
