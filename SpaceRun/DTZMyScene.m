@@ -4,6 +4,10 @@
 @property (nonatomic, weak) UITouch *shipTouch;
 @property (nonatomic) NSTimeInterval lastUpdateTime;
 @property (nonatomic) NSTimeInterval lastShotFireTime;
+
+@property (nonatomic, strong) SKAction *shootSound;
+@property (nonatomic, strong) SKAction *shipExplodeSound;
+@property (nonatomic, strong) SKAction *obstacleExplodeSound;
 @end
 
 @implementation DTZMyScene
@@ -19,6 +23,11 @@
         ship.size = CGSizeMake(40, 40);
         ship.name = @"ship";
         [self addChild:ship];
+        
+        self.shootSound = [SKAction playSoundFileNamed:@"shoot.m4a" waitForCompletion:NO];
+        self.obstacleExplodeSound = [SKAction playSoundFileNamed:@"obstacleExplode.m4a" waitForCompletion:NO];
+        self.shipExplodeSound = [SKAction playSoundFileNamed:@"shipExplode.m4a" waitForCompletion:NO];
+        
     }
     return self;
 }
@@ -64,6 +73,8 @@
     SKAction *remove = [SKAction removeFromParent];
     SKAction *fireAndRemove = [SKAction sequence:@[fly, remove]];
     [photon runAction:fireAndRemove];
+    
+    [self runAction:self.shootSound];
 }
 
 - (void)dropAsteroid
@@ -162,11 +173,13 @@
             self.shipTouch = nil;
             [ship removeFromParent];
             [obstacle removeFromParent];
+            [self runAction:self.shipExplodeSound];
         }
         [self enumerateChildNodesWithName:@"photon" usingBlock:^(SKNode *photon, BOOL *stop) {
             if ([photon intersectsNode:obstacle]) {
                 [photon removeFromParent];
                 [obstacle removeFromParent];
+                [self runAction:self.obstacleExplodeSound];
                 *stop = YES;
             }
         }];

@@ -27,6 +27,9 @@
 		6791C4061915EB2C00F5F15E /* asteroid.png in Resources */ = {isa = PBXBuildFile; fileRef = 6791C4041915EB2C00F5F15E /* asteroid.png */; };
 		6791C4071915EB2C00F5F15E /* photon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6791C4051915EB2C00F5F15E /* photon.png */; };
 		6791C409191750AC00F5F15E /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 6791C408191750AC00F5F15E /* enemy.png */; };
+		6791C40D191757DE00F5F15E /* obstacleExplode.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 6791C40A191757DE00F5F15E /* obstacleExplode.m4a */; };
+		6791C40E191757DE00F5F15E /* shipExplode.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 6791C40B191757DE00F5F15E /* shipExplode.m4a */; };
+		6791C40F191757DE00F5F15E /* shoot.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 6791C40C191757DE00F5F15E /* shoot.m4a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +69,9 @@
 		6791C4041915EB2C00F5F15E /* asteroid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asteroid.png; sourceTree = "<group>"; };
 		6791C4051915EB2C00F5F15E /* photon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photon.png; sourceTree = "<group>"; };
 		6791C408191750AC00F5F15E /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy.png; sourceTree = "<group>"; };
+		6791C40A191757DE00F5F15E /* obstacleExplode.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = obstacleExplode.m4a; sourceTree = "<group>"; };
+		6791C40B191757DE00F5F15E /* shipExplode.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = shipExplode.m4a; sourceTree = "<group>"; };
+		6791C40C191757DE00F5F15E /* shoot.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = shoot.m4a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +135,9 @@
 			children = (
 				6791C408191750AC00F5F15E /* enemy.png */,
 				6791C4041915EB2C00F5F15E /* asteroid.png */,
+				6791C40A191757DE00F5F15E /* obstacleExplode.m4a */,
+				6791C40B191757DE00F5F15E /* shipExplode.m4a */,
+				6791C40C191757DE00F5F15E /* shoot.m4a */,
 				6791C4051915EB2C00F5F15E /* photon.png */,
 				677A1CB71915CD260042DCDD /* DTZAppDelegate.h */,
 				677A1CB81915CD260042DCDD /* DTZAppDelegate.m */,
@@ -250,11 +259,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6791C40F191757DE00F5F15E /* shoot.m4a in Resources */,
 				677A1CB31915CD260042DCDD /* InfoPlist.strings in Resources */,
+				6791C40D191757DE00F5F15E /* obstacleExplode.m4a in Resources */,
 				677A1CC61915CD260042DCDD /* Images.xcassets in Resources */,
 				6791C409191750AC00F5F15E /* enemy.png in Resources */,
 				677A1CC41915CD260042DCDD /* Spaceship.png in Resources */,
 				6791C4061915EB2C00F5F15E /* asteroid.png in Resources */,
+				6791C40E191757DE00F5F15E /* shipExplode.m4a in Resources */,
 				677A1CBC1915CD260042DCDD /* Main.storyboard in Resources */,
 				6791C4071915EB2C00F5F15E /* photon.png in Resources */,
 			);
