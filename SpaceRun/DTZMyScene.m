@@ -24,9 +24,9 @@
         ship.name = @"ship";
         [self addChild:ship];
         
-        self.shootSound = [SKAction playSoundFileNamed:@"shoot.m4a" waitForCompletion:NO];
-        self.obstacleExplodeSound = [SKAction playSoundFileNamed:@"obstacleExplode.m4a" waitForCompletion:NO];
-        self.shipExplodeSound = [SKAction playSoundFileNamed:@"shipExplode.m4a" waitForCompletion:NO];
+        self.shootSound = [SKAction playSoundFileNamed:@"shoot.wav" waitForCompletion:NO];
+        self.obstacleExplodeSound = [SKAction playSoundFileNamed:@"obstacleExplode.wav" waitForCompletion:NO];
+        self.shipExplodeSound = [SKAction playSoundFileNamed:@"shipExplode.wav" waitForCompletion:NO];
         
     }
     return self;
