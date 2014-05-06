@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		67758F19191893000093F864 /* SKEmitterNode+DTZExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 67758F18191893000093F864 /* SKEmitterNode+DTZExtensions.m */; };
 		677A1CA71915CD260042DCDD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 677A1CA61915CD260042DCDD /* Foundation.framework */; };
 		677A1CA91915CD260042DCDD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 677A1CA81915CD260042DCDD /* CoreGraphics.framework */; };
 		677A1CAB1915CD260042DCDD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 677A1CAA1915CD260042DCDD /* UIKit.framework */; };
@@ -31,6 +32,10 @@
 		6791C41319175C2300F5F15E /* shoot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6791C41219175C2300F5F15E /* shoot.wav */; };
 		6791C41519175CCD00F5F15E /* obstacleExplode.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6791C41419175CCD00F5F15E /* obstacleExplode.wav */; };
 		67CFA4761918825A0007F426 /* powerup.png in Resources */ = {isa = PBXBuildFile; fileRef = 67CFA4751918825A0007F426 /* powerup.png */; };
+		67CFA47919188DAD0007F426 /* DTZStarField.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CFA47819188DAD0007F426 /* DTZStarField.m */; };
+		67CFA47B19188F000007F426 /* shootingstar.png in Resources */ = {isa = PBXBuildFile; fileRef = 67CFA47A19188F000007F426 /* shootingstar.png */; };
+		67CFA47E191890850007F426 /* thrust.sks in Resources */ = {isa = PBXBuildFile; fileRef = 67CFA47C191890850007F426 /* thrust.sks */; };
+		67CFA47F191890850007F426 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 67CFA47D191890850007F426 /* spark.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		67758F17191893000093F864 /* SKEmitterNode+DTZExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKEmitterNode+DTZExtensions.h"; sourceTree = "<group>"; };
+		67758F18191893000093F864 /* SKEmitterNode+DTZExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKEmitterNode+DTZExtensions.m"; sourceTree = "<group>"; };
 		677A1CA31915CD260042DCDD /* SpaceRun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceRun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		677A1CA61915CD260042DCDD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		677A1CA81915CD260042DCDD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -74,6 +81,11 @@
 		6791C41219175C2300F5F15E /* shoot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shoot.wav; sourceTree = "<group>"; };
 		6791C41419175CCD00F5F15E /* obstacleExplode.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = obstacleExplode.wav; sourceTree = "<group>"; };
 		67CFA4751918825A0007F426 /* powerup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powerup.png; sourceTree = "<group>"; };
+		67CFA47719188DAD0007F426 /* DTZStarField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTZStarField.h; sourceTree = "<group>"; };
+		67CFA47819188DAD0007F426 /* DTZStarField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTZStarField.m; sourceTree = "<group>"; };
+		67CFA47A19188F000007F426 /* shootingstar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shootingstar.png; sourceTree = "<group>"; };
+		67CFA47C191890850007F426 /* thrust.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = thrust.sks; sourceTree = "<group>"; };
+		67CFA47D191890850007F426 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +154,7 @@
 				6791C41419175CCD00F5F15E /* obstacleExplode.wav */,
 				67CFA4751918825A0007F426 /* powerup.png */,
 				6791C41219175C2300F5F15E /* shoot.wav */,
+				67CFA47A19188F000007F426 /* shootingstar.png */,
 				6791C41019175BCB00F5F15E /* shipExplode.wav */,
 				677A1CB81915CD260042DCDD /* DTZAppDelegate.m */,
 				677A1CBA1915CD260042DCDD /* Main.storyboard */,
@@ -152,6 +165,12 @@
 				677A1CC31915CD260042DCDD /* Spaceship.png */,
 				677A1CC51915CD260042DCDD /* Images.xcassets */,
 				677A1CAF1915CD260042DCDD /* Supporting Files */,
+				67CFA47719188DAD0007F426 /* DTZStarField.h */,
+				67CFA47819188DAD0007F426 /* DTZStarField.m */,
+				67CFA47C191890850007F426 /* thrust.sks */,
+				67CFA47D191890850007F426 /* spark.png */,
+				67758F17191893000093F864 /* SKEmitterNode+DTZExtensions.h */,
+				67758F18191893000093F864 /* SKEmitterNode+DTZExtensions.m */,
 			);
 			path = SpaceRun;
 			sourceTree = "<group>";
@@ -265,14 +284,17 @@
 				6791C41119175BCB00F5F15E /* shipExplode.wav in Resources */,
 				677A1CB31915CD260042DCDD /* InfoPlist.strings in Resources */,
 				677A1CC61915CD260042DCDD /* Images.xcassets in Resources */,
+				67CFA47F191890850007F426 /* spark.png in Resources */,
 				67CFA4761918825A0007F426 /* powerup.png in Resources */,
 				6791C409191750AC00F5F15E /* enemy.png in Resources */,
 				677A1CC41915CD260042DCDD /* Spaceship.png in Resources */,
 				6791C4061915EB2C00F5F15E /* asteroid.png in Resources */,
 				677A1CBC1915CD260042DCDD /* Main.storyboard in Resources */,
+				67CFA47B19188F000007F426 /* shootingstar.png in Resources */,
 				6791C41319175C2300F5F15E /* shoot.wav in Resources */,
 				6791C4071915EB2C00F5F15E /* photon.png in Resources */,
 				6791C41519175CCD00F5F15E /* obstacleExplode.wav in Resources */,
+				67CFA47E191890850007F426 /* thrust.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,7 +314,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				677A1CBF1915CD260042DCDD /* DTZViewController.m in Sources */,
+				67CFA47919188DAD0007F426 /* DTZStarField.m in Sources */,
 				677A1CC21915CD260042DCDD /* DTZMyScene.m in Sources */,
+				67758F19191893000093F864 /* SKEmitterNode+DTZExtensions.m in Sources */,
 				677A1CB51915CD260042DCDD /* main.m in Sources */,
 				677A1CB91915CD260042DCDD /* DTZAppDelegate.m in Sources */,
 			);

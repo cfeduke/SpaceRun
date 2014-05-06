@@ -1,4 +1,6 @@
 #import "DTZMyScene.h"
+#import "DTZStarField.h"
+#import "SKEmitterNode+DTZExtensions.h"
 
 @interface DTZMyScene ()
 @property (nonatomic, weak) UITouch *shipTouch;
@@ -17,6 +19,8 @@
 {
     if (self = [super initWithSize:size]) {
         self.backgroundColor = [SKColor blackColor];
+        DTZStarField *starField = [DTZStarField node];
+        [self addChild:starField];
         
         NSString *name = @"Spaceship.png";
         SKSpriteNode *ship = [SKSpriteNode spriteNodeWithImageNamed:name];
@@ -24,6 +28,10 @@
         ship.size = CGSizeMake(40, 40);
         ship.name = @"ship";
         [self addChild:ship];
+        
+        SKEmitterNode *thrust = [SKEmitterNode dtz_nodeWithFile:@"thrust"];
+        thrust.position = CGPointMake(0, -20);
+        [ship addChild:thrust];
         
         self.shootSound = [SKAction playSoundFileNamed:@"shoot.wav" waitForCompletion:NO];
         self.obstacleExplodeSound = [SKAction playSoundFileNamed:@"obstacleExplode.wav" waitForCompletion:NO];
