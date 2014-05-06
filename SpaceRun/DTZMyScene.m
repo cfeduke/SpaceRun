@@ -4,6 +4,7 @@
 @property (nonatomic, weak) UITouch *shipTouch;
 @property (nonatomic) NSTimeInterval lastUpdateTime;
 @property (nonatomic) NSTimeInterval lastShotFireTime;
+@property (nonatomic) CGFloat shipFireRate;
 
 @property (nonatomic, strong) SKAction *shootSound;
 @property (nonatomic, strong) SKAction *shipExplodeSound;
@@ -27,6 +28,7 @@
         self.shootSound = [SKAction playSoundFileNamed:@"shoot.wav" waitForCompletion:NO];
         self.obstacleExplodeSound = [SKAction playSoundFileNamed:@"obstacleExplode.wav" waitForCompletion:NO];
         self.shipExplodeSound = [SKAction playSoundFileNamed:@"shipExplode.wav" waitForCompletion:NO];
+        self.shipFireRate = 0.5;
         
     }
     return self;
@@ -128,6 +130,29 @@
     [enemy runAction:all];
 }
 
+- (void)dropPowerup
+{
+    CGFloat sideSize = 30;
+    CGFloat startX = arc4random_uniform(self.size.width - 60) + 30;
+    CGFloat startY = self.size.height + sideSize;
+    CGFloat endY = 0 - sideSize;
+    
+    SKSpriteNode *powerup = [SKSpriteNode spriteNodeWithImageNamed:@"powerup"];
+    powerup.name = @"powerup";
+    powerup.size = CGSizeMake(sideSize, sideSize);
+    powerup.position = CGPointMake(startX, startY);
+    [self addChild:powerup];
+    
+    SKAction *move = [SKAction moveTo:CGPointMake(startX, endY) duration:6];
+    SKAction *spin = [SKAction rotateByAngle:-1 duration:1];
+    SKAction *remove = [SKAction removeFromParent];
+    
+    SKAction *spinForever = [SKAction repeatActionForever:spin];
+    SKAction *travelAndRemove = [SKAction sequence:@[move, remove]];
+    SKAction *all = [SKAction group:@[spinForever, travelAndRemove]];
+    [powerup runAction:all];
+}
+
 - (CGPathRef)buildEnemyShipMovementPath
 {
     UIBezierPath* bezierPath = [UIBezierPath bezierPath];
@@ -168,6 +193,21 @@
 {
     SKNode *ship = [self childNodeWithName:@"ship"];
     
+    [self enumerateChildNodesWithName:@"powerup" usingBlock:^(SKNode *powerup, BOOL *stop) {
+        if ([ship intersectsNode:powerup]) {
+            [powerup removeFromParent];
+            self.shipFireRate = 0.1;
+            
+            SKAction *powerdown = [SKAction runBlock:^{
+                self.shipFireRate = 0.5;
+            }];
+            SKAction *wait = [SKAction waitForDuration:5];
+            SKAction *waitAndPowerdown = [SKAction sequence:@[wait, powerdown]];
+            [ship removeActionForKey:@"waitAndPowerdown"];
+            [ship runAction:waitAndPowerdown withKey:@"waitAndPowerdown"];
+        }
+    }];
+    
     [self enumerateChildNodesWithName:@"obstacle" usingBlock:^(SKNode *obstacle, BOOL *stop) {
         if ([ship intersectsNode:obstacle]) {
             self.shipTouch = nil;
@@ -190,7 +230,10 @@
 - (void)dropThing
 {
     u_int32_t dice = arc4random_uniform(100);
-    if (dice < 15) {
+    if (dice < 5) {
+        [self dropPowerup];
+    }
+    else if (dice < 20) {
         [self dropEnemyShip];
     } else {
         [self dropAsteroid];
@@ -207,8 +250,8 @@
     if (self.shipTouch) {
         [self moveShipTowardPoint:[self.shipTouch locationInNode:self]
                       byTimeDelta:timeDelta];
-        
-        if (currentTime - self.lastShotFireTime > 0.5) {
+    
+        if (currentTime - self.lastShotFireTime > self.shipFireRate) {
             [self shoot];
             self.lastShotFireTime = currentTime;
         }

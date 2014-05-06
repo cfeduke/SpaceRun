@@ -30,6 +30,7 @@
 		6791C41119175BCB00F5F15E /* shipExplode.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6791C41019175BCB00F5F15E /* shipExplode.wav */; };
 		6791C41319175C2300F5F15E /* shoot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6791C41219175C2300F5F15E /* shoot.wav */; };
 		6791C41519175CCD00F5F15E /* obstacleExplode.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6791C41419175CCD00F5F15E /* obstacleExplode.wav */; };
+		67CFA4761918825A0007F426 /* powerup.png in Resources */ = {isa = PBXBuildFile; fileRef = 67CFA4751918825A0007F426 /* powerup.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		6791C41019175BCB00F5F15E /* shipExplode.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shipExplode.wav; sourceTree = "<group>"; };
 		6791C41219175C2300F5F15E /* shoot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shoot.wav; sourceTree = "<group>"; };
 		6791C41419175CCD00F5F15E /* obstacleExplode.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = obstacleExplode.wav; sourceTree = "<group>"; };
+		67CFA4751918825A0007F426 /* powerup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powerup.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 				6791C4051915EB2C00F5F15E /* photon.png */,
 				677A1CB71915CD260042DCDD /* DTZAppDelegate.h */,
 				6791C41419175CCD00F5F15E /* obstacleExplode.wav */,
+				67CFA4751918825A0007F426 /* powerup.png */,
 				6791C41219175C2300F5F15E /* shoot.wav */,
 				6791C41019175BCB00F5F15E /* shipExplode.wav */,
 				677A1CB81915CD260042DCDD /* DTZAppDelegate.m */,
@@ -262,6 +265,7 @@
 				6791C41119175BCB00F5F15E /* shipExplode.wav in Resources */,
 				677A1CB31915CD260042DCDD /* InfoPlist.strings in Resources */,
 				677A1CC61915CD260042DCDD /* Images.xcassets in Resources */,
+				67CFA4761918825A0007F426 /* powerup.png in Resources */,
 				6791C409191750AC00F5F15E /* enemy.png in Resources */,
 				677A1CC41915CD260042DCDD /* Spaceship.png in Resources */,
 				6791C4061915EB2C00F5F15E /* asteroid.png in Resources */,
