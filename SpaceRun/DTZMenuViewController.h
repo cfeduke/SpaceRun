@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "DTZStarField.h"
 
 @interface DTZMenuViewController : UIViewController
 @property (nonatomic, strong) IBOutlet UISegmentedControl *difficultyChooser;
+@property (nonatomic, strong) SKView *demoView;
 @end
