@@ -11,6 +11,13 @@
 @property (nonatomic, strong) SKAction *shootSound;
 @property (nonatomic, strong) SKAction *shipExplodeSound;
 @property (nonatomic, strong) SKAction *obstacleExplodeSound;
+
+@property (nonatomic, strong) SKEmitterNode *shipExplodeTemplate;
+@property (nonatomic, strong) SKEmitterNode *enemyExplodeTemplate;
+@property (nonatomic, strong) SKEmitterNode *asteroidExplodeTemplate;
+
+@property (nonatomic, strong) NSMutableDictionary *enemyDescriptor;
+@property (nonatomic, strong) NSMutableDictionary *asteroidDescriptor;
 @end
 
 @implementation DTZMyScene
@@ -37,6 +44,13 @@
         self.obstacleExplodeSound = [SKAction playSoundFileNamed:@"obstacleExplode.wav" waitForCompletion:NO];
         self.shipExplodeSound = [SKAction playSoundFileNamed:@"shipExplode.wav" waitForCompletion:NO];
         self.shipFireRate = 0.5;
+        
+        self.shipExplodeTemplate = [SKEmitterNode dtz_nodeWithFile:@"shipExplosion"];
+        self.enemyExplodeTemplate = [SKEmitterNode dtz_nodeWithFile:@"enemyExplosion"];
+        self.asteroidExplodeTemplate = [SKEmitterNode dtz_nodeWithFile:@"asteroidExplosion"];
+        
+        self.enemyDescriptor = [NSMutableDictionary dictionaryWithObject:self.enemyExplodeTemplate forKey:@"explosion-template"];
+        self.asteroidDescriptor = [NSMutableDictionary dictionaryWithObject:self.asteroidExplodeTemplate forKey:@"explosion-template"];
         
     }
     return self;
@@ -101,6 +115,7 @@
     asteroid.size = CGSizeMake(sideSize, sideSize);
     asteroid.position = CGPointMake(startX, startY);
     asteroid.name = @"obstacle";
+    asteroid.userData = self.asteroidDescriptor;
     [self addChild:asteroid];
     
     SKAction *move = [SKAction moveTo:CGPointMake(endX, endY)
@@ -125,6 +140,7 @@
     enemy.size = CGSizeMake(sideSize, sideSize);
     enemy.position = CGPointMake(startX, startY);
     enemy.name = @"obstacle";
+    enemy.userData = self.enemyDescriptor;
     [self addChild:enemy];
     
     CGPathRef shipPath = [self buildEnemyShipMovementPath];
@@ -222,12 +238,24 @@
             [ship removeFromParent];
             [obstacle removeFromParent];
             [self runAction:self.shipExplodeSound];
+            SKEmitterNode *explosion = [self.shipExplodeTemplate copy];
+            explosion.position = ship.position;
+            [explosion dtz_dieOutInDuration:0.3];
+            [self addChild:explosion];
         }
         [self enumerateChildNodesWithName:@"photon" usingBlock:^(SKNode *photon, BOOL *stop) {
             if ([photon intersectsNode:obstacle]) {
                 [photon removeFromParent];
                 [obstacle removeFromParent];
                 [self runAction:self.obstacleExplodeSound];
+                
+                NSMutableDictionary *descriptor = obstacle.userData;
+                
+                SKEmitterNode *explosion = [[descriptor objectForKey:@"explosion-template"] copy];
+                explosion.position = obstacle.position;
+                [explosion dtz_dieOutInDuration:0.1];
+                [self addChild:explosion];
+                
                 *stop = YES;
             }
         }];

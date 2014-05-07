@@ -11,5 +11,6 @@
 @interface SKEmitterNode (DTZExtensions)
 
 + (SKEmitterNode *)dtz_nodeWithFile:(NSString *)filename;
+- (void)dtz_dieOutInDuration:(NSTimeInterval)duration;
 
 @end
