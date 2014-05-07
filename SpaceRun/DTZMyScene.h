@@ -9,5 +9,6 @@
 #import <SpriteKit/SpriteKit.h>
 
 @interface DTZMyScene : SKScene
-
+@property (nonatomic, copy) dispatch_block_t endGameCallback;
+@property (nonatomic) BOOL easyMode;
 @end

@@ -43,7 +43,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="LVB-YS-i5n" kind="push" id="r5I-4A-hUL"/>
+                                    <segue destination="LVB-YS-i5n" kind="push" identifier="play-game" id="EOn-50-Q8P"/>
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="KkN-OK-jkD">
@@ -76,6 +76,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RhF-2X-1SF"/>
+                    <connections>
+                        <outlet property="difficultyChooser" destination="KkN-OK-jkD" id="3Tm-N1-4JN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nWc-wm-WB4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -84,7 +87,7 @@
         <!--View Controller-->
         <scene sceneID="CtS-rA-C9T">
             <objects>
-                <viewController id="LVB-YS-i5n" customClass="RCWViewController" sceneMemberID="viewController">
+                <viewController id="LVB-YS-i5n" customClass="DTZViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Izt-R4-lU0"/>
                         <viewControllerLayoutGuide type="bottom" id="glL-nY-GPm"/>

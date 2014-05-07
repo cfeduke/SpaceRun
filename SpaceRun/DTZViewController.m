@@ -16,13 +16,19 @@
     [super viewDidLoad];
 
     // Configure the view.
-    SKView * skView = (SKView *)self.view;
+    SKView *skView = (SKView *)self.view;
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
     
     // Create and configure the scene.
-    SKScene * scene = [DTZMyScene sceneWithSize:skView.bounds.size];
+    DTZMyScene *scene = [DTZMyScene sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
+    scene.easyMode = self.easyMode;
+    
+    __weak DTZViewController *weakSelf = self;
+    scene.endGameCallback = ^{
+        [weakSelf.navigationController popViewControllerAnimated:YES];
+    };
     
     // Present the scene.
     [skView presentScene:scene];

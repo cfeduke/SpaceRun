@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DTZMenuViewController : UIViewController
 
+@interface DTZMenuViewController : UIViewController
+@property (nonatomic, strong) IBOutlet UISegmentedControl *difficultyChooser;
 @end

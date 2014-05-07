@@ -242,6 +242,8 @@
             explosion.position = ship.position;
             [explosion dtz_dieOutInDuration:0.3];
             [self addChild:explosion];
+            
+            [self endGame];
         }
         [self enumerateChildNodesWithName:@"photon" usingBlock:^(SKNode *photon, BOOL *stop) {
             if ([photon intersectsNode:obstacle]) {
@@ -293,12 +295,25 @@
         }
     }
     
-    if (arc4random_uniform(1000) <= 15) {
+    NSInteger thingProbability;
+    if (self.easyMode) {
+        thingProbability = 15;
+    } else {
+        thingProbability = 30;
+    }
+    
+    if (arc4random_uniform(1000) <= thingProbability) {
         [self dropThing];
     }
     
     [self checkCollisions];
     
     self.lastUpdateTime = currentTime;
+}
+
+- (void)endGame
+{
+    NSAssert(self.endGameCallback, @"Forgot to set the endGameCallBack");
+    self.endGameCallback();
 }
 @end

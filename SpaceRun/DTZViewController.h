@@ -10,5 +10,5 @@
 #import <SpriteKit/SpriteKit.h>
 
 @interface DTZViewController : UIViewController
-
+@property (nonatomic) BOOL easyMode;
 @end
