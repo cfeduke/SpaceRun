@@ -41,6 +41,7 @@
 		67CFA47B19188F000007F426 /* shootingstar.png in Resources */ = {isa = PBXBuildFile; fileRef = 67CFA47A19188F000007F426 /* shootingstar.png */; };
 		67CFA47E191890850007F426 /* thrust.sks in Resources */ = {isa = PBXBuildFile; fileRef = 67CFA47C191890850007F426 /* thrust.sks */; };
 		67CFA47F191890850007F426 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 67CFA47D191890850007F426 /* spark.png */; };
+		67D60601191C28E500AD3F91 /* DTZGameOverNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D60600191C28E500AD3F91 /* DTZGameOverNode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,8 @@
 		67CFA47A19188F000007F426 /* shootingstar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shootingstar.png; sourceTree = "<group>"; };
 		67CFA47C191890850007F426 /* thrust.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = thrust.sks; sourceTree = "<group>"; };
 		67CFA47D191890850007F426 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		67D605FF191C28E500AD3F91 /* DTZGameOverNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTZGameOverNode.h; sourceTree = "<group>"; };
+		67D60600191C28E500AD3F91 /* DTZGameOverNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTZGameOverNode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +193,8 @@
 				6792BCED191ACC6800D19E45 /* DTZMenuViewController.m */,
 				6792BCEF191ADDF800D19E45 /* DTZOpeningScreen.h */,
 				6792BCF0191ADDF800D19E45 /* DTZOpeningScreen.m */,
+				67D605FF191C28E500AD3F91 /* DTZGameOverNode.h */,
+				67D60600191C28E500AD3F91 /* DTZGameOverNode.m */,
 			);
 			path = SpaceRun;
 			sourceTree = "<group>";
@@ -343,6 +348,7 @@
 				677A1CB51915CD260042DCDD /* main.m in Sources */,
 				677A1CB91915CD260042DCDD /* DTZAppDelegate.m in Sources */,
 				6792BCF1191ADDF800D19E45 /* DTZOpeningScreen.m in Sources */,
+				67D60601191C28E500AD3F91 /* DTZGameOverNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,6 +1,7 @@
 #import "DTZMyScene.h"
 #import "DTZStarField.h"
 #import "SKEmitterNode+DTZExtensions.h"
+#import "DTZGameOverNode.h"
 
 @interface DTZMyScene ()
 @property (nonatomic, weak) UITouch *shipTouch;
@@ -18,6 +19,8 @@
 
 @property (nonatomic, strong) NSMutableDictionary *enemyDescriptor;
 @property (nonatomic, strong) NSMutableDictionary *asteroidDescriptor;
+
+@property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
 @end
 
 @implementation DTZMyScene
@@ -311,9 +314,23 @@
     self.lastUpdateTime = currentTime;
 }
 
-- (void)endGame
+-(void)endGame {
+    self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped)];
+    [self.view addGestureRecognizer:self.tapGesture];
+    
+    DTZGameOverNode *gameOver = [DTZGameOverNode node];
+    gameOver.position = CGPointMake(self.size.width / 2, self.size.height / 2);
+    [self addChild:gameOver];
+}
+
+- (void)tapped
 {
     NSAssert(self.endGameCallback, @"Forgot to set the endGameCallBack");
     self.endGameCallback();
+}
+
+- (void)willMoveFromView:(SKView *)view {
+    [self.view removeGestureRecognizer:self.tapGesture];
+    self.tapGesture = nil;
 }
 @end
