@@ -8,6 +8,7 @@
 
 #import "DTZViewController.h"
 #import "DTZMyScene.h"
+#import "DTZOpeningScreen.h"
 
 @implementation DTZViewController
 
@@ -20,18 +21,36 @@
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
     
-    // Create and configure the scene.
-    DTZMyScene *scene = [DTZMyScene sceneWithSize:skView.bounds.size];
+    SKScene *blackScene = [[SKScene alloc] initWithSize:skView.bounds.size];
+    blackScene.backgroundColor = [SKColor blackColor];
+    [skView presentScene:blackScene];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    SKView *skView = (SKView *)self.view;
+    
+    DTZOpeningScreen *scene = [DTZOpeningScreen sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
-    scene.easyMode = self.easyMode;
+    SKTransition *transition = [SKTransition fadeWithDuration:1];
+    [skView presentScene:scene transition:transition];
     
     __weak DTZViewController *weakSelf = self;
-    scene.endGameCallback = ^{
-        [weakSelf.navigationController popViewControllerAnimated:YES];
+    scene.sceneEndCallback = ^{
+        // Create and configure the scene.
+        DTZMyScene *scene = [DTZMyScene sceneWithSize:skView.bounds.size];
+        scene.scaleMode = SKSceneScaleModeAspectFill;
+        scene.easyMode = weakSelf.easyMode;
+        
+        scene.endGameCallback = ^{
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        };
+        
+        SKTransition *transition = [SKTransition fadeWithColor:[SKColor blackColor] duration:1];
+        [skView presentScene:scene transition:transition];
+
     };
-    
-    // Present the scene.
-    [skView presentScene:scene];
 }
 
 - (BOOL)shouldAutorotate

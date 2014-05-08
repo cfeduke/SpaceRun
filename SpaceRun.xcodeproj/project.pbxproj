@@ -32,6 +32,7 @@
 		6791C41319175C2300F5F15E /* shoot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6791C41219175C2300F5F15E /* shoot.wav */; };
 		6791C41519175CCD00F5F15E /* obstacleExplode.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6791C41419175CCD00F5F15E /* obstacleExplode.wav */; };
 		6792BCEE191ACC6800D19E45 /* DTZMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6792BCED191ACC6800D19E45 /* DTZMenuViewController.m */; };
+		6792BCF1191ADDF800D19E45 /* DTZOpeningScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 6792BCF0191ADDF800D19E45 /* DTZOpeningScreen.m */; };
 		67B8470A1919DA3D00E5E7B2 /* asteroidExplosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 67B847091919DA3D00E5E7B2 /* asteroidExplosion.sks */; };
 		67B8470C1919DBA900E5E7B2 /* shipExplosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 67B8470B1919DBA900E5E7B2 /* shipExplosion.sks */; };
 		67CA5B141919E6F10071CA83 /* enemyExplosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 67CA5B131919E6F10071CA83 /* enemyExplosion.sks */; };
@@ -86,6 +87,8 @@
 		6791C41419175CCD00F5F15E /* obstacleExplode.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = obstacleExplode.wav; sourceTree = "<group>"; };
 		6792BCEC191ACC6800D19E45 /* DTZMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTZMenuViewController.h; sourceTree = "<group>"; };
 		6792BCED191ACC6800D19E45 /* DTZMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTZMenuViewController.m; sourceTree = "<group>"; };
+		6792BCEF191ADDF800D19E45 /* DTZOpeningScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTZOpeningScreen.h; sourceTree = "<group>"; };
+		6792BCF0191ADDF800D19E45 /* DTZOpeningScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTZOpeningScreen.m; sourceTree = "<group>"; };
 		67B847091919DA3D00E5E7B2 /* asteroidExplosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = asteroidExplosion.sks; sourceTree = "<group>"; };
 		67B8470B1919DBA900E5E7B2 /* shipExplosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = shipExplosion.sks; sourceTree = "<group>"; };
 		67CA5B131919E6F10071CA83 /* enemyExplosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = enemyExplosion.sks; sourceTree = "<group>"; };
@@ -185,6 +188,8 @@
 				67CA5B131919E6F10071CA83 /* enemyExplosion.sks */,
 				6792BCEC191ACC6800D19E45 /* DTZMenuViewController.h */,
 				6792BCED191ACC6800D19E45 /* DTZMenuViewController.m */,
+				6792BCEF191ADDF800D19E45 /* DTZOpeningScreen.h */,
+				6792BCF0191ADDF800D19E45 /* DTZOpeningScreen.m */,
 			);
 			path = SpaceRun;
 			sourceTree = "<group>";
@@ -337,6 +342,7 @@
 				67758F19191893000093F864 /* SKEmitterNode+DTZExtensions.m in Sources */,
 				677A1CB51915CD260042DCDD /* main.m in Sources */,
 				677A1CB91915CD260042DCDD /* DTZAppDelegate.m in Sources */,
+				6792BCF1191ADDF800D19E45 /* DTZOpeningScreen.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
