@@ -12,6 +12,7 @@
 @interface DTZOpeningScreen ()
 @property (nonatomic, strong) UIView *slantedView;
 @property (nonatomic, strong) UITextView *textView;
+@property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
 @end
 
 @implementation DTZOpeningScreen
@@ -60,13 +61,29 @@
     [UIView animateWithDuration:20 delay:0 options:UIViewAnimationCurveLinear animations:^{
         self.textView.center = CGPointMake(self.size.width / 2, 0 - (self.size.height / 2));
     } completion:^(BOOL finished) {
+        if (finished) {
+            [self endScene];
+        }
+    }];
+    
+    self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endScene)];
+    [self.view addGestureRecognizer:self.tapGesture];
+}
+
+- (void)endScene {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.textView.alpha = 0;
+    } completion:^(BOOL finished) {
+        [self.textView.layer removeAllAnimations];
         NSAssert(self.sceneEndCallback, @"Scene end callback not set");
         self.sceneEndCallback();
     }];
-    
 }
 
 - (void)willMoveFromView:(SKView *)view {
+    [self.view removeGestureRecognizer:self.tapGesture];
+    self.tapGesture = nil;
+    
     [self.slantedView removeFromSuperview];
     
     self.slantedView = nil;
