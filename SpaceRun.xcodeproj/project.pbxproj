@@ -42,6 +42,7 @@
 		67CFA47E191890850007F426 /* thrust.sks in Resources */ = {isa = PBXBuildFile; fileRef = 67CFA47C191890850007F426 /* thrust.sks */; };
 		67CFA47F191890850007F426 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 67CFA47D191890850007F426 /* spark.png */; };
 		67D60601191C28E500AD3F91 /* DTZGameOverNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D60600191C28E500AD3F91 /* DTZGameOverNode.m */; };
+		67D60604191C7E8000AD3F91 /* DTZHUDNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D60603191C7E8000AD3F91 /* DTZHUDNode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,8 @@
 		67CFA47D191890850007F426 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		67D605FF191C28E500AD3F91 /* DTZGameOverNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTZGameOverNode.h; sourceTree = "<group>"; };
 		67D60600191C28E500AD3F91 /* DTZGameOverNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTZGameOverNode.m; sourceTree = "<group>"; };
+		67D60602191C7E8000AD3F91 /* DTZHUDNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTZHUDNode.h; sourceTree = "<group>"; };
+		67D60603191C7E8000AD3F91 /* DTZHUDNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTZHUDNode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +180,8 @@
 				677A1CBE1915CD260042DCDD /* DTZViewController.m */,
 				677A1CC01915CD260042DCDD /* DTZMyScene.h */,
 				677A1CC11915CD260042DCDD /* DTZMyScene.m */,
+				67D60602191C7E8000AD3F91 /* DTZHUDNode.h */,
+				67D60603191C7E8000AD3F91 /* DTZHUDNode.m */,
 				677A1CC31915CD260042DCDD /* Spaceship.png */,
 				677A1CC51915CD260042DCDD /* Images.xcassets */,
 				677A1CAF1915CD260042DCDD /* Supporting Files */,
@@ -342,6 +347,7 @@
 			files = (
 				677A1CBF1915CD260042DCDD /* DTZViewController.m in Sources */,
 				67CFA47919188DAD0007F426 /* DTZStarField.m in Sources */,
+				67D60604191C7E8000AD3F91 /* DTZHUDNode.m in Sources */,
 				6792BCEE191ACC6800D19E45 /* DTZMenuViewController.m in Sources */,
 				677A1CC21915CD260042DCDD /* DTZMyScene.m in Sources */,
 				67758F19191893000093F864 /* SKEmitterNode+DTZExtensions.m in Sources */,

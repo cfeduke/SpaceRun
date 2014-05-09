@@ -2,6 +2,7 @@
 #import "DTZStarField.h"
 #import "SKEmitterNode+DTZExtensions.h"
 #import "DTZGameOverNode.h"
+#import "DTZHUDNode.h"
 
 @interface DTZMyScene ()
 @property (nonatomic, weak) UITouch *shipTouch;
@@ -54,6 +55,15 @@
         
         self.enemyDescriptor = [NSMutableDictionary dictionaryWithObject:self.enemyExplodeTemplate forKey:@"explosion-template"];
         self.asteroidDescriptor = [NSMutableDictionary dictionaryWithObject:self.asteroidExplodeTemplate forKey:@"explosion-template"];
+        
+        DTZHUDNode *hudNode = [DTZHUDNode node];
+        hudNode.name = @"hud";
+        hudNode.zPosition = 100;
+        hudNode.position = CGPointMake(size.width / 2, size.height / 2);
+        [self addChild:hudNode];
+        
+        [hudNode layoutForScene];
+        [hudNode startGame];
         
     }
     return self;
@@ -261,6 +271,10 @@
                 [explosion dtz_dieOutInDuration:0.1];
                 [self addChild:explosion];
                 
+                DTZHUDNode *hud = (DTZHUDNode *)[self childNodeWithName:@"hud"];
+                NSInteger score = 10 * hud.elapsedTime * (self.easyMode ? 1 : 2);
+                [hud addPoints:score];
+                
                 *stop = YES;
             }
         }];
@@ -321,6 +335,9 @@
     DTZGameOverNode *gameOver = [DTZGameOverNode node];
     gameOver.position = CGPointMake(self.size.width / 2, self.size.height / 2);
     [self addChild:gameOver];
+    
+    DTZHUDNode *hud = (DTZHUDNode *)[self childNodeWithName:@"hud"];
+    [hud endGame];
 }
 
 - (void)tapped
